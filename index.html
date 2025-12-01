@@ -13,11 +13,14 @@
     <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <div class="logo">
+                <img src="images/splash enhanced.jpeg" alt="Forever Fit Logo" class="logo-image">
                 <h1>FOREVER FIT</h1>
             </div>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#trainers">Trainers</a></li>
+                <li><a href="#kids-mma">Kids MMA</a></li>
                 <li><a href="#media">Media</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -29,9 +32,14 @@
         </div>
     </nav>
 
-    <!-- Section 1: Hero Section with Splash Background -->
+    <!-- Section 1: Hero Section with Video Background -->
     <section id="home" class="hero-section">
         <div class="hero-background">
+            <video autoplay muted loop playsinline preload="auto" class="hero-video" id="heroVideo">
+                <source src="assets/Green Team .mp4" type="video/mp4">
+                <!-- Fallback image if video doesn't load -->
+                Your browser does not support the video tag.
+            </video>
             <div class="matrix-overlay"></div>
         </div>
         <div class="hero-content">
@@ -48,34 +56,297 @@
     <!-- Section 2: About Section -->
     <section id="about" class="about-section">
         <div class="container">
-            <h2 class="section-title">About Forever Fit</h2>
+            <h2 class="section-title">About <span class="accent">Forever Fit</span></h2>
             <div class="about-content">
                 <div class="about-text">
                     <p>Forever Fit is your premier destination for achieving your fitness goals. We offer state-of-the-art equipment, expert trainers, and a supportive community that will help you reach new heights.</p>
                     <p>Whether you're a beginner or a seasoned athlete, we have everything you need to succeed on your fitness journey.</p>
+                    <p>Our mission is to empower individuals of all fitness levels to transform their bodies and lives through comprehensive training programs, cutting-edge facilities, and unwavering support from our dedicated team.</p>
+                    <p>At Forever Fit, we believe that fitness is not just about physical strength—it's about building confidence, discipline, and a healthier lifestyle that extends far beyond the gym walls.</p>
                 </div>
                 <div class="about-features">
                     <div class="feature-card">
-                        <div class="feature-icon">💪</div>
+                        <div class="feature-icon-wrapper">
+                            <img src="images/splash enhanced.jpeg" alt="Expert Trainers" class="feature-icon-image">
+                            <div class="feature-icon-overlay">💪</div>
+                        </div>
                         <h3>Expert Trainers</h3>
-                        <p>Certified professionals ready to guide you</p>
+                        <p>Certified professionals ready to guide you through personalized training programs tailored to your unique goals and fitness level.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🏋️</div>
+                        <div class="feature-icon-wrapper">
+                            <img src="images/splash enhanced.jpeg" alt="Modern Equipment" class="feature-icon-image">
+                            <div class="feature-icon-overlay">🏋️</div>
+                        </div>
                         <h3>Modern Equipment</h3>
-                        <p>Top-of-the-line fitness machines and weights</p>
+                        <p>Top-of-the-line fitness machines and weights featuring the latest technology to maximize your workout efficiency and results.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🌟</div>
+                        <div class="feature-icon-wrapper">
+                            <img src="images/splash enhanced.jpeg" alt="Community Support" class="feature-icon-image">
+                            <div class="feature-icon-overlay">🌟</div>
+                        </div>
                         <h3>Community Support</h3>
-                        <p>Join a community of fitness enthusiasts</p>
+                        <p>Join a vibrant community of fitness enthusiasts who motivate, inspire, and celebrate each other's achievements every step of the way.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 3: Media/Images Gallery -->
+    <!-- Section 3: Meet the Team / Personal Trainers -->
+    <section id="trainers" class="trainers-section">
+        <div class="container">
+            <h1 class="trainers-main-title">Our <span class="accent">Personal Trainers</span></h1>
+            <h2 class="trainers-subtitle">Meet the Team</h2>
+            <div class="trainers-carousel-wrapper">
+                <button class="carousel-arrow carousel-arrow-left" aria-label="Previous trainers">
+                    <span>‹</span>
+                </button>
+                <div class="trainers-carousel">
+                    <div class="trainers-track">
+                        <div class="trainer-card">
+                            <div class="trainer-background"></div>
+                            <div class="trainer-image-container">
+                                <img src="images/owen_Pt.jpg" alt="Owen - Personal Trainer" class="trainer-image">
+                            </div>
+                            <div class="trainer-triangle-overlay">
+                                <div class="trainer-info">
+                                    <h3 class="trainer-name">Owen</h3>
+                                    <ul class="trainer-specialties">
+                                        <li>Advanced Personal Training</li>
+                                        <li>Bodybuilding Coach</li>
+                                        <li>Nutrition Specialist</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="trainer-card">
+                            <div class="trainer-background"></div>
+                            <div class="trainer-image-container">
+                                <img src="images/PT2.jpg" alt="Personal Trainer" class="trainer-image">
+                            </div>
+                            <div class="trainer-triangle-overlay">
+                                <div class="trainer-info">
+                                    <h3 class="trainer-name">Trainer Name</h3>
+                                    <ul class="trainer-specialties">
+                                        <li>Advanced Personal Training</li>
+                                        <li>Bodybuilding Coach</li>
+                                        <li>Nutrition Specialist</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="trainer-card">
+                            <div class="trainer-background"></div>
+                            <div class="trainer-image-container">
+                                <img src="images/Q_PT.jpg" alt="Q - Personal Trainer" class="trainer-image">
+                            </div>
+                            <div class="trainer-triangle-overlay">
+                                <div class="trainer-info">
+                                    <h3 class="trainer-name">Q</h3>
+                                    <ul class="trainer-specialties">
+                                        <li>Advanced Personal Training</li>
+                                        <li>Bodybuilding Coach</li>
+                                        <li>Nutrition Specialist</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="trainer-card">
+                            <div class="trainer-background"></div>
+                            <div class="trainer-image-container">
+                                <img src="images/owen_Pt.jpg" alt="Owen - Personal Trainer" class="trainer-image">
+                            </div>
+                            <div class="trainer-triangle-overlay">
+                                <div class="trainer-info">
+                                    <h3 class="trainer-name">Owen</h3>
+                                    <ul class="trainer-specialties">
+                                        <li>Advanced Personal Training</li>
+                                        <li>Bodybuilding Coach</li>
+                                        <li>Nutrition Specialist</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="trainer-card">
+                            <div class="trainer-background"></div>
+                            <div class="trainer-image-container">
+                                <img src="images/PT2.jpg" alt="Personal Trainer" class="trainer-image">
+                            </div>
+                            <div class="trainer-triangle-overlay">
+                                <div class="trainer-info">
+                                    <h3 class="trainer-name">Trainer Name</h3>
+                                    <ul class="trainer-specialties">
+                                        <li>Advanced Personal Training</li>
+                                        <li>Bodybuilding Coach</li>
+                                        <li>Nutrition Specialist</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="trainer-card">
+                            <div class="trainer-background"></div>
+                            <div class="trainer-image-container">
+                                <img src="images/Q_PT.jpg" alt="Q - Personal Trainer" class="trainer-image">
+                            </div>
+                            <div class="trainer-triangle-overlay">
+                                <div class="trainer-info">
+                                    <h3 class="trainer-name">Q</h3>
+                                    <ul class="trainer-specialties">
+                                        <li>Advanced Personal Training</li>
+                                        <li>Bodybuilding Coach</li>
+                                        <li>Nutrition Specialist</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-arrow carousel-arrow-right" aria-label="Next trainers">
+                    <span>›</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider: Personal Trainers to Kids MMA -->
+    <div class="section-divider"></div>
+
+    <!-- Section 4: Kids Forever Fit MMA -->
+    <section id="kids-mma" class="kids-mma-section">
+        <!-- Splash Screen Animation Layer -->
+        <div class="mma-splash-screen">
+            <img src="images/Screenshot 2025-12-01 124404.png" alt="Kids MMA Splash" class="mma-splash-image">
+        </div>
+        
+        <!-- Video Background Layer -->
+        <div class="mma-video-background">
+            <video autoplay muted loop playsinline preload="auto" class="mma-background-video" id="mmaKidsVideo" webkit-playsinline="true" x-webkit-airplay="allow">
+                <source src="assets/mma_kids_vid.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <!-- Fallback play button if video doesn't autoplay -->
+            <button class="video-play-overlay" id="mmaVideoPlayBtn" style="display: none;">
+                <span>▶</span>
+                <p>Click to Play Video</p>
+            </button>
+        </div>
+        
+        <!-- Logo Overlay (appears after animation) -->
+        <div class="mma-logo-overlay">
+            <img src="images/Screenshot 2025-12-01 124404.png" alt="Kids MMA Logo" class="mma-logo-image">
+        </div>
+        
+        <!-- Content Layer (buttons and text) -->
+        <div class="mma-content-layer">
+            <h1 class="mma-main-title">Kids Forever Fit MMA</h1>
+            
+            <!-- Navigation Buttons -->
+            <div class="mma-nav-buttons">
+                <button class="mma-nav-btn" data-content="about">
+                    <span class="btn-label">About</span>
+                    <div class="btn-content">
+                        <h3>About Kids MMA</h3>
+                        <p>Discover our comprehensive martial arts program designed specifically for kids.</p>
+                    </div>
+                </button>
+                <button class="mma-nav-btn" data-content="how-it-works">
+                    <span class="btn-label">How It Works</span>
+                    <div class="btn-content">
+                        <h3>How It Works</h3>
+                        <p>Learn about our structured classes and training methodology.</p>
+                    </div>
+                </button>
+                <button class="mma-nav-btn" data-content="age-groups">
+                    <span class="btn-label">Age Groups</span>
+                    <div class="btn-content">
+                        <h3>Age Groups</h3>
+                        <p>Find the right class for your child's age and skill level.</p>
+                    </div>
+                </button>
+                <button class="mma-nav-btn" data-content="benefits">
+                    <span class="btn-label">Benefits</span>
+                    <div class="btn-content">
+                        <h3>Benefits</h3>
+                        <p>See how martial arts helps kids develop physically and mentally.</p>
+                    </div>
+                </button>
+                <button class="mma-nav-btn" data-content="schedule">
+                    <span class="btn-label">Schedule</span>
+                    <div class="btn-content">
+                        <h3>Schedule</h3>
+                        <p>View class times and days available for registration.</p>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simple Video Background Section (Second Kids MMA Section) -->
+    <section id="kids-mma-video" class="simple-mma-section">
+        <!-- Video Background -->
+        <div class="simple-video-background">
+            <video autoplay muted loop playsinline preload="auto" class="simple-background-video" id="simpleMmaVideo">
+                <source src="assets/mma_kids_vid.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        
+        <!-- Matrix Overlay Effect -->
+        <div class="simple-matrix-overlay"></div>
+        
+        <!-- Logo in Center -->
+        <div class="simple-logo-center">
+            <img src="images/Screenshot 2025-12-01 124404.png" alt="Kids MMA Logo" class="simple-logo-image">
+        </div>
+        
+        <!-- Title -->
+        <div class="simple-title">
+            <h1>Kids Forever Fit MMA</h1>
+        </div>
+        
+        <!-- Buttons on Side -->
+        <div class="simple-nav-buttons">
+            <button class="simple-nav-btn" data-content="about">
+                <span class="simple-btn-label">About</span>
+                <div class="simple-btn-content">
+                    <h3>About Kids MMA</h3>
+                    <p>Discover our comprehensive martial arts program designed specifically for kids.</p>
+                </div>
+            </button>
+            <button class="simple-nav-btn" data-content="how-it-works">
+                <span class="simple-btn-label">How It Works</span>
+                <div class="simple-btn-content">
+                    <h3>How It Works</h3>
+                    <p>Learn about our structured classes and training methodology.</p>
+                </div>
+            </button>
+            <button class="simple-nav-btn" data-content="age-groups">
+                <span class="simple-btn-label">Age Groups</span>
+                <div class="simple-btn-content">
+                    <h3>Age Groups</h3>
+                    <p>Find the right class for your child's age and skill level.</p>
+                </div>
+            </button>
+            <button class="simple-nav-btn" data-content="benefits">
+                <span class="simple-btn-label">Benefits</span>
+                <div class="simple-btn-content">
+                    <h3>Benefits</h3>
+                    <p>See how martial arts helps kids develop physically and mentally.</p>
+                </div>
+            </button>
+            <button class="simple-nav-btn" data-content="schedule">
+                <span class="simple-btn-label">Schedule</span>
+                <div class="simple-btn-content">
+                    <h3>Schedule</h3>
+                    <p>View class times and days available for registration.</p>
+                </div>
+            </button>
+        </div>
+    </section>
+
+    <!-- Section 5: Media/Images Gallery -->
     <section id="media" class="media-section">
         <div class="container">
             <h2 class="section-title">Our Gallery</h2>
@@ -119,7 +390,7 @@
         <div class="container">
             <div class="contact-wrapper">
                 <div class="contact-info">
-                    <h2 class="section-title">Get In Touch</h2>
+                    <h2 class="section-title">Get In <span class="accent">Touch</span></h2>
                     <p>Visit us or reach out to learn more about Forever Fit and how we can help you achieve your fitness goals.</p>
                     
                     <div class="contact-details">
@@ -163,6 +434,207 @@
                         <textarea placeholder="Your Message" rows="5" required aria-label="Your Message"></textarea>
                         <button type="submit" class="submit-button">Send Message</button>
                     </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile App Section -->
+    <section id="mobile-app" class="mobile-app-section">
+        <div class="container">
+            <div class="mobile-app-wrapper">
+                <!-- Mobile App Image (Left Side) -->
+                <div class="mobile-app-image-container">
+                    <img src="images/mobilr app.jpeg" alt="ACTVon6 Mobile App" class="mobile-app-image">
+                </div>
+                
+                <!-- Mobile App Content (Right Side) -->
+                <div class="mobile-app-content">
+                    <h2 class="mobile-app-title">Forever Gym</h2>
+                    <h3 class="mobile-app-subtitle">Hybrid Training Mobile Application</h3>
+                    <p class="mobile-app-description">AI-Powered Fitness Companion</p>
+                    
+                    <div class="mobile-app-info">
+                        <p>Experience the future of fitness with Forever Gym's revolutionary mobile application. Seamlessly track your workouts, leverage artificial intelligence as your personal trainer, and get intelligent guidance for injury recovery and prevention.</p>
+                    </div>
+                    
+                    <!-- AI Features Dropdown Sections -->
+                    <div class="ai-features-container">
+                        <button class="ai-feature-btn" data-feature="ai-trainer">
+                            <span class="ai-icon">🤖</span>
+                            <span class="ai-title">AI Personal Trainer</span>
+                            <span class="ai-arrow">▼</span>
+                        </button>
+                        <div class="ai-feature-content" id="ai-trainer">
+                            <p>Our advanced AI analyzes your fitness level, goals, and progress to create personalized workout plans. Get real-time form corrections, exercise recommendations, and adaptive training programs that evolve with you.</p>
+                        </div>
+                        
+                        <button class="ai-feature-btn" data-feature="workout-tracking">
+                            <span class="ai-icon">📊</span>
+                            <span class="ai-title">Seamless Workout Tracking</span>
+                            <span class="ai-arrow">▼</span>
+                        </button>
+                        <div class="ai-feature-content" id="workout-tracking">
+                            <p>Track every rep, set, and exercise with intelligent logging. The app automatically recognizes exercises, counts repetitions, and monitors your progress over time. Sync seamlessly across all your devices.</p>
+                        </div>
+                        
+                        <button class="ai-feature-btn" data-feature="injury-prevention">
+                            <span class="ai-icon">🛡️</span>
+                            <span class="ai-title">Injury Recovery & Prevention</span>
+                            <span class="ai-arrow">▼</span>
+                        </button>
+                        <div class="ai-feature-content" id="injury-prevention">
+                            <p>AI-powered movement analysis helps prevent injuries before they happen. Get personalized recovery plans, exercise modifications, and rehabilitation guidance tailored to your specific needs and limitations.</p>
+                        </div>
+                        
+                        <button class="ai-feature-btn" data-feature="smart-insights">
+                            <span class="ai-icon">💡</span>
+                            <span class="ai-title">Smart Insights & Analytics</span>
+                            <span class="ai-arrow">▼</span>
+                        </button>
+                        <div class="ai-feature-content" id="smart-insights">
+                            <p>Receive intelligent insights about your training patterns, recovery needs, and performance trends. The AI learns from your data to provide actionable recommendations for optimal results.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Download Buttons -->
+                    <div class="download-buttons">
+                        <a href="https://apps.apple.com/app/forevergym" target="_blank" class="download-btn download-apple">
+                            <span class="download-icon">📱</span>
+                            <span class="download-text">DOWNLOAD</span>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.forevergym" target="_blank" class="download-btn download-android">
+                            <span class="download-icon">📱</span>
+                            <span class="download-text">DOWNLOAD</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Section -->
+    <section id="join" class="join-section">
+        <div class="container">
+            <h1 class="join-main-title">Join Forever Fit</h1>
+            <h2 class="join-subtitle">Choose Your Perfect Plan</h2>
+            
+            <!-- Email Input -->
+            <div class="join-email-container">
+                <input type="email" placeholder="Enter your email address" class="join-email-input" id="joinEmailInput">
+                <button class="join-email-btn">Get Started</button>
+            </div>
+            
+            <!-- Package Cards -->
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-name">Flexi Fit</h3>
+                        <div class="package-badge">Popular</div>
+                    </div>
+                    <div class="package-price">
+                        <span class="price-amount">R500</span>
+                        <span class="price-period">/ Month to Month</span>
+                    </div>
+                    <ul class="package-features">
+                        <li>Full gym access</li>
+                        <li>All equipment included</li>
+                        <li>No contract commitment</li>
+                        <li>Cancel anytime</li>
+                    </ul>
+                    <button class="package-join-btn">Join Now</button>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-name">Premium Fit</h3>
+                        <div class="package-badge">Best Value</div>
+                    </div>
+                    <div class="package-price">
+                        <span class="price-amount">R1,200</span>
+                        <span class="price-period">/ 3 Months</span>
+                    </div>
+                    <ul class="package-features">
+                        <li>Full gym access</li>
+                        <li>Personal training session</li>
+                        <li>Nutrition consultation</li>
+                        <li>Priority booking</li>
+                    </ul>
+                    <button class="package-join-btn">Join Now</button>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-name">Elite Fit</h3>
+                        <div class="package-badge">Premium</div>
+                    </div>
+                    <div class="package-price">
+                        <span class="price-amount">R2,200</span>
+                        <span class="price-period">/ 6 Months</span>
+                    </div>
+                    <ul class="package-features">
+                        <li>Full gym access</li>
+                        <li>Unlimited personal training</li>
+                        <li>Nutrition plan included</li>
+                        <li>24/7 access</li>
+                        <li>Guest passes included</li>
+                    </ul>
+                    <button class="package-join-btn">Join Now</button>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-name">Student Fit</h3>
+                        <div class="package-badge">Special</div>
+                    </div>
+                    <div class="package-price">
+                        <span class="price-amount">R350</span>
+                        <span class="price-period">/ Month</span>
+                    </div>
+                    <ul class="package-features">
+                        <li>Full gym access</li>
+                        <li>Student ID required</li>
+                        <li>All equipment included</li>
+                        <li>Flexible hours</li>
+                    </ul>
+                    <button class="package-join-btn">Join Now</button>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-name">Family Fit</h3>
+                        <div class="package-badge">Family</div>
+                    </div>
+                    <div class="package-price">
+                        <span class="price-amount">R1,500</span>
+                        <span class="price-period">/ Month</span>
+                    </div>
+                    <ul class="package-features">
+                        <li>Up to 4 family members</li>
+                        <li>Full gym access for all</li>
+                        <li>Kids MMA classes included</li>
+                        <li>Family training sessions</li>
+                    </ul>
+                    <button class="package-join-btn">Join Now</button>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-name">Annual Fit</h3>
+                        <div class="package-badge">Save 20%</div>
+                    </div>
+                    <div class="package-price">
+                        <span class="price-amount">R4,800</span>
+                        <span class="price-period">/ Year</span>
+                    </div>
+                    <ul class="package-features">
+                        <li>Full gym access</li>
+                        <li>All equipment included</li>
+                        <li>2 free personal training sessions</li>
+                        <li>Best value - Save 20%</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <button class="package-join-btn">Join Now</button>
                 </div>
             </div>
         </div>

@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
             const isExpanded = navMenu.classList.contains('active');
             menuToggle.setAttribute('aria-expanded', isExpanded);
         });
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             navMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
             menuToggle.setAttribute('aria-expanded', 'false');
         });
     });
@@ -138,6 +140,404 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Ensure video background plays smoothly with custom time range (15-21 seconds)
+    const heroVideo = document.querySelector('.hero-video') || document.getElementById('heroVideo');
+    if (heroVideo) {
+        const START_TIME = 15; // Start at 15 seconds
+        const END_TIME = 21;   // End at 21 seconds
+        
+        // Set initial time when video metadata loads
+        heroVideo.addEventListener('loadedmetadata', function() {
+            this.currentTime = START_TIME;
+            this.play().catch(function(error) {
+                console.log('Video autoplay prevented:', error);
+            });
+        });
+        
+        // Monitor video time and loop between 15-21 seconds
+        heroVideo.addEventListener('timeupdate', function() {
+            // If video reaches or exceeds 21 seconds, loop back to 15 seconds
+            if (this.currentTime >= END_TIME) {
+                this.currentTime = START_TIME;
+            }
+            // If video somehow goes before 15 seconds (e.g., on load), set to 15
+            if (this.currentTime < START_TIME) {
+                this.currentTime = START_TIME;
+            }
+        });
+        
+        // Ensure video loops smoothly
+        heroVideo.addEventListener('ended', function() {
+            this.currentTime = START_TIME;
+            this.play();
+        });
+        
+        // Force play on user interaction if needed
+        document.addEventListener('click', function() {
+            if (heroVideo.paused) {
+                heroVideo.currentTime = START_TIME;
+                heroVideo.play();
+            }
+        }, { once: true });
+        
+        // Ensure video starts at correct time when it can play
+        heroVideo.addEventListener('canplay', function() {
+            if (this.currentTime < START_TIME || this.currentTime > END_TIME) {
+                this.currentTime = START_TIME;
+            }
+        });
+    }
+
+    // Trainers Carousel Functionality
+    const trainersCarousel = document.querySelector('.trainers-carousel');
+    const trainersTrack = document.querySelector('.trainers-track');
+    const trainerCards = document.querySelectorAll('.trainer-card');
+    const leftArrow = document.querySelector('.carousel-arrow-left');
+    const rightArrow = document.querySelector('.carousel-arrow-right');
+    
+    if (trainersCarousel && trainersTrack && trainerCards.length > 0) {
+        let currentIndex = 0;
+        let isScrolling = false;
+        const cardWidth = trainerCards[0].offsetWidth + 48; // card width + gap (3rem = 48px)
+        const totalCards = trainerCards.length;
+        const visibleCards = Math.floor(trainersCarousel.offsetWidth / cardWidth);
+        
+        // Infinite scroll - duplicate cards for seamless loop
+        const firstCardClone = trainerCards[0].cloneNode(true);
+        const lastCardClone = trainerCards[totalCards - 1].cloneNode(true);
+        trainersTrack.appendChild(firstCardClone);
+        trainersTrack.insertBefore(lastCardClone, trainerCards[0]);
+        
+        function updateCarousel() {
+            if (isScrolling) return;
+            isScrolling = true;
+            
+            trainersTrack.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            trainersTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            
+            setTimeout(() => {
+                isScrolling = false;
+                
+                // Reset to beginning/end for infinite scroll
+                if (currentIndex >= totalCards) {
+                    trainersTrack.style.transition = 'none';
+                    currentIndex = 0;
+                    trainersTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+                } else if (currentIndex < 0) {
+                    trainersTrack.style.transition = 'none';
+                    currentIndex = totalCards - 1;
+                    trainersTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+                }
+            }, 600);
+        }
+        
+        // Auto-scroll carousel
+        let autoScrollInterval = setInterval(() => {
+            currentIndex++;
+            updateCarousel();
+        }, 3000); // Scroll every 3 seconds
+        
+        // Pause auto-scroll on hover
+        trainersCarousel.addEventListener('mouseenter', () => {
+            clearInterval(autoScrollInterval);
+        });
+        
+        trainersCarousel.addEventListener('mouseleave', () => {
+            autoScrollInterval = setInterval(() => {
+                currentIndex++;
+                updateCarousel();
+            }, 3000);
+        });
+        
+        // Arrow navigation
+        if (leftArrow) {
+            leftArrow.addEventListener('click', () => {
+                currentIndex--;
+                updateCarousel();
+                clearInterval(autoScrollInterval);
+                autoScrollInterval = setInterval(() => {
+                    currentIndex++;
+                    updateCarousel();
+                }, 3000);
+            });
+        }
+        
+        if (rightArrow) {
+            rightArrow.addEventListener('click', () => {
+                currentIndex++;
+                updateCarousel();
+                clearInterval(autoScrollInterval);
+                autoScrollInterval = setInterval(() => {
+                    currentIndex++;
+                    updateCarousel();
+                }, 3000);
+            });
+        }
+        
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        trainersCarousel.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        trainersCarousel.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                // Swipe left - next
+                currentIndex++;
+                updateCarousel();
+            }
+            if (touchEndX > touchStartX + 50) {
+                // Swipe right - previous
+                currentIndex--;
+                updateCarousel();
+            }
+        }
+    }
+
+    // Kids MMA Section Video Control - Power-saving resistant
+    const mmaVideo = document.querySelector('.mma-background-video') || document.getElementById('mmaKidsVideo');
+    const mmaVideoBackground = document.querySelector('.mma-video-background');
+    const mmaPlayBtn = document.getElementById('mmaVideoPlayBtn');
+    
+    if (mmaVideo) {
+        // Set video attributes
+        mmaVideo.muted = true;
+        mmaVideo.loop = true;
+        mmaVideo.playsInline = true;
+        mmaVideo.setAttribute('playsinline', '');
+        mmaVideo.setAttribute('webkit-playsinline', '');
+        mmaVideo.setAttribute('muted', '');
+        mmaVideo.setAttribute('autoplay', '');
+        
+        let videoPlaying = false;
+        let playAttempts = 0;
+        const maxAttempts = 5;
+        
+        // Function to play video aggressively
+        const playVideo = () => {
+            if (mmaVideo.readyState >= 2) { // HAVE_CURRENT_DATA or higher
+                const playPromise = mmaVideo.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        videoPlaying = true;
+                        playAttempts = 0;
+                        mmaVideo.style.opacity = '1';
+                        mmaVideo.style.display = 'block';
+                        if (mmaPlayBtn) mmaPlayBtn.style.display = 'none';
+                        if (mmaVideoBackground) {
+                            mmaVideoBackground.style.opacity = '1';
+                        }
+                    }).catch(error => {
+                        videoPlaying = false;
+                        playAttempts++;
+                        if (mmaPlayBtn) mmaPlayBtn.style.display = 'flex';
+                        console.log('Video play failed:', error.name);
+                    });
+                }
+            }
+        };
+        
+        // Show play button if video fails to play
+        if (mmaPlayBtn) {
+            mmaPlayBtn.addEventListener('click', () => {
+                playVideo();
+            });
+        }
+        
+        // Aggressive play attempts
+        mmaVideo.addEventListener('loadedmetadata', playVideo);
+        mmaVideo.addEventListener('loadeddata', playVideo);
+        mmaVideo.addEventListener('canplay', playVideo);
+        mmaVideo.addEventListener('canplaythrough', playVideo);
+        
+        // Prevent pause from power saving
+        mmaVideo.addEventListener('pause', function(e) {
+            if (!this.ended && !document.hidden && videoPlaying) {
+                setTimeout(() => {
+                    if (this.paused) {
+                        this.play().then(() => {
+                            videoPlaying = true;
+                        }).catch(() => {
+                            if (mmaPlayBtn) mmaPlayBtn.style.display = 'flex';
+                        });
+                    }
+                }, 100);
+            }
+        });
+        
+        // Ensure video plays after splash animation
+        setTimeout(() => {
+            playVideo();
+            if (mmaVideoBackground) {
+                mmaVideoBackground.style.opacity = '1';
+            }
+        }, 4000);
+        
+        // Force play after animation completes
+        setTimeout(() => {
+            playVideo();
+        }, 6000);
+        
+        // Video loop handler
+        mmaVideo.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play().then(() => {
+                this.style.opacity = '1';
+                this.style.display = 'block';
+            }).catch(() => {
+                if (mmaPlayBtn) mmaPlayBtn.style.display = 'flex';
+            });
+        });
+        
+        // Show video when playing
+        mmaVideo.addEventListener('playing', function() {
+            this.style.opacity = '1';
+            this.style.display = 'block';
+            videoPlaying = true;
+            if (mmaVideoBackground) {
+                mmaVideoBackground.style.opacity = '1';
+            }
+        });
+        
+        // Ensure video is visible after splash animation
+        setTimeout(() => {
+            mmaVideo.style.opacity = '1';
+            mmaVideo.style.display = 'block';
+            if (mmaVideoBackground) {
+                mmaVideoBackground.style.opacity = '1';
+            }
+        }, 6000);
+        
+        // Handle page visibility
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden && mmaVideo.paused && videoPlaying) {
+                setTimeout(() => playVideo(), 500);
+            }
+        });
+        
+        // Intersection Observer - play when section is visible
+        const kidsMmaSection = document.querySelector('.kids-mma-section');
+        if (kidsMmaSection && 'IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+                        playVideo();
+                        if (mmaVideoBackground) {
+                            mmaVideoBackground.style.opacity = '1';
+                        }
+                    }
+                });
+            }, { threshold: [0.3, 0.5, 0.7] });
+            
+            observer.observe(kidsMmaSection);
+        }
+        
+        // Aggressive periodic check (every 1 second)
+        const playCheckInterval = setInterval(() => {
+            if (mmaVideo.paused && !mmaVideo.ended && !document.hidden && playAttempts < maxAttempts) {
+                playVideo();
+            } else if (playAttempts >= maxAttempts && mmaPlayBtn) {
+                mmaPlayBtn.style.display = 'flex';
+            }
+        }, 1000);
+        
+        // Clean up interval when video is playing
+        mmaVideo.addEventListener('playing', () => {
+            videoPlaying = true;
+            playAttempts = 0;
+        });
+        
+        // User interaction triggers
+        const userInteractionPlay = () => {
+            if (mmaVideo.paused) {
+                playVideo();
+            }
+        };
+        
+        document.addEventListener('click', userInteractionPlay, { once: true });
+        document.addEventListener('touchstart', userInteractionPlay, { once: true });
+        document.addEventListener('scroll', userInteractionPlay, { once: true });
+        window.addEventListener('focus', userInteractionPlay, { once: true });
+    }
+
+    // Simple MMA Section Video Control
+    const simpleMmaVideo = document.getElementById('simpleMmaVideo');
+    if (simpleMmaVideo) {
+        simpleMmaVideo.muted = true;
+        simpleMmaVideo.loop = true;
+        simpleMmaVideo.playsInline = true;
+        
+        const playSimpleVideo = () => {
+            const playPromise = simpleMmaVideo.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    console.log('Simple MMA video playing successfully');
+                }).catch(error => {
+                    console.log('Simple video autoplay prevented:', error.name);
+                    document.addEventListener('click', () => simpleMmaVideo.play(), { once: true });
+                    document.addEventListener('touchstart', () => simpleMmaVideo.play(), { once: true });
+                });
+            }
+        };
+        
+        simpleMmaVideo.addEventListener('canplay', playSimpleVideo, { once: true });
+        simpleMmaVideo.addEventListener('loadeddata', playSimpleVideo, { once: true });
+        
+        // Ensure video loops
+        simpleMmaVideo.addEventListener('ended', function() {
+            this.currentTime = 0;
+            this.play();
+        });
+        
+        // Play on section visibility
+        const simpleMmaSection = document.querySelector('.simple-mma-section');
+        if (simpleMmaSection && 'IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        playSimpleVideo();
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            observer.observe(simpleMmaSection);
+        }
+    }
+
+    // AI Features Dropdown Functionality
+    const aiFeatureBtns = document.querySelectorAll('.ai-feature-btn');
+    aiFeatureBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const featureId = this.getAttribute('data-feature');
+            const content = document.getElementById(featureId);
+            
+            // Close all other dropdowns
+            aiFeatureBtns.forEach(otherBtn => {
+                if (otherBtn !== this) {
+                    otherBtn.classList.remove('active');
+                    const otherId = otherBtn.getAttribute('data-feature');
+                    const otherContent = document.getElementById(otherId);
+                    if (otherContent) {
+                        otherContent.classList.remove('active');
+                    }
+                }
+            });
+            
+            // Toggle current dropdown
+            this.classList.toggle('active');
+            if (content) {
+                content.classList.toggle('active');
+            }
+        });
+    });
+
     // Performance: Preload critical images
     const splashImage = new Image();
     splashImage.src = 'assets/splashenhanced.jpeg';
@@ -155,6 +555,7 @@ window.addEventListener('resize', function() {
     if (window.innerWidth > 768 && navMenu) {
         navMenu.classList.remove('active');
         if (menuToggle) {
+            menuToggle.classList.remove('active');
             menuToggle.setAttribute('aria-expanded', 'false');
         }
     }
@@ -169,6 +570,7 @@ document.addEventListener('keydown', function(e) {
         if (navMenu && navMenu.classList.contains('active')) {
             navMenu.classList.remove('active');
             if (menuToggle) {
+                menuToggle.classList.remove('active');
                 menuToggle.setAttribute('aria-expanded', 'false');
             }
         }
