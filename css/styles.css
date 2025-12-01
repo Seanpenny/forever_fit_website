@@ -1318,6 +1318,264 @@ body {
     font-size: 1.2rem;
 }
 
+/* ===== EVENTS & NEWS FEED SECTION ===== */
+.events-section {
+    padding: 100px 0;
+    background: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-surface) 100%);
+    position: relative;
+}
+
+.events-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--lime-green), transparent);
+    box-shadow: 0 0 20px var(--lime-green);
+}
+
+.events-subtitle {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Events Filter Tabs */
+.events-filter {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: rgba(26, 26, 26, 0.8);
+    border: 2px solid rgba(57, 255, 20, 0.3);
+    color: var(--text-light);
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.filter-btn:hover {
+    border-color: var(--lime-green);
+    background: rgba(57, 255, 20, 0.1);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: var(--lime-green);
+    color: var(--text-dark);
+    border-color: var(--lime-green);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+}
+
+/* Events Feed */
+.events-feed {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.event-card {
+    background: rgba(26, 26, 26, 0.8);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: all 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.event-card:hover {
+    border-color: var(--lime-green);
+    box-shadow: 0 0 30px rgba(57, 255, 20, 0.4);
+    transform: translateY(-5px);
+}
+
+.event-card.hidden {
+    display: none;
+}
+
+.event-image-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background: var(--dark-surface);
+}
+
+.event-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.event-card:hover .event-image {
+    transform: scale(1.1);
+}
+
+.event-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.upcoming-badge {
+    background: var(--lime-green);
+    color: var(--text-dark);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.6);
+}
+
+.past-badge {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-light);
+    backdrop-filter: blur(10px);
+}
+
+.event-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.event-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background: rgba(57, 255, 20, 0.1);
+    border: 2px solid var(--lime-green);
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+    position: absolute;
+    top: -35px;
+    left: 2rem;
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+}
+
+.date-day {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--lime-green);
+    line-height: 1;
+}
+
+.date-month {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--lime-green);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-top: 0.2rem;
+}
+
+.event-title {
+    color: var(--lime-green);
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    letter-spacing: 1px;
+}
+
+.event-description {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.event-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(57, 255, 20, 0.2);
+}
+
+.event-time,
+.event-location {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.event-btn {
+    background: var(--lime-green);
+    color: var(--text-dark);
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    align-self: flex-start;
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+}
+
+.event-btn:hover {
+    background: var(--lime-green-light);
+    box-shadow: 0 0 25px rgba(57, 255, 20, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design for Events Section */
+@media (max-width: 768px) {
+    .events-feed {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .event-card {
+        max-width: 100%;
+    }
+
+    .filter-btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .event-title {
+        font-size: 1.3rem;
+    }
+}
+
 /* ===== SECTION 5: CONTACT SECTION ===== */
 .contact-section {
     padding: 100px 0;
@@ -2003,6 +2261,7 @@ body {
 .footer p {
     color: rgba(255, 255, 255, 0.8);
     font-size: 0.9rem;
+    margin-bottom: 1rem;
 }
 
 .footer p::before {
@@ -2011,6 +2270,40 @@ body {
     font-weight: 700;
     text-shadow: 0 0 10px var(--lime-green);
     margin-right: 1rem;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--lime-green);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid rgba(57, 255, 20, 0.3);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.github-link:hover {
+    background: rgba(57, 255, 20, 0.1);
+    border-color: var(--lime-green);
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+    transform: translateY(-2px);
+}
+
+.github-link span {
+    font-size: 1.1rem;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */

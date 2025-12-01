@@ -542,6 +542,52 @@ document.addEventListener('DOMContentLoaded', function() {
     const splashImage = new Image();
     splashImage.src = 'assets/splashenhanced.jpeg';
     
+    // Events Filter Functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const eventCards = document.querySelectorAll('.event-card');
+    
+    if (filterButtons.length > 0 && eventCards.length > 0) {
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                
+                // Filter event cards
+                eventCards.forEach(card => {
+                    if (filter === 'all') {
+                        card.classList.remove('hidden');
+                        card.style.display = 'flex';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        const category = card.getAttribute('data-category');
+                        if (category === filter) {
+                            card.classList.remove('hidden');
+                            card.style.display = 'flex';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'scale(1)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.9)';
+                            setTimeout(() => {
+                                card.classList.add('hidden');
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    }
+                });
+            });
+        });
+    }
+    
     // Console log for debugging
     console.log('Forever Fit website loaded successfully!');
     console.log('Green theme active with matrix warp effects');
