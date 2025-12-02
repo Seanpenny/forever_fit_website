@@ -208,50 +208,75 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Ensure video background plays smoothly with custom time range (15-21 seconds)
-    const heroVideo = document.querySelector('.hero-video') || document.getElementById('heroVideo');
+    // Hero Video - Optimized with WebM support and better loading
+    const heroVideo = document.getElementById('heroVideo');
     if (heroVideo) {
-        const START_TIME = 15; // Start at 15 seconds
-        const END_TIME = 21;   // End at 21 seconds
+        const START_TIME = 15;
+        const END_TIME = 21;
         
-        // Set initial time when video metadata loads
-        heroVideo.addEventListener('loadedmetadata', function() {
-            this.currentTime = START_TIME;
-            this.play().catch(function(error) {
-                // Video autoplay prevented
-            });
+        // Set video attributes for better compatibility
+        heroVideo.setAttribute('playsinline', '');
+        heroVideo.setAttribute('webkit-playsinline', '');
+        heroVideo.muted = true;
+        heroVideo.loop = true;
+        heroVideo.preload = 'metadata'; // Load metadata only, faster initial load
+        
+        // Try to play video with multiple attempts
+        const playHeroVideo = () => {
+            if (heroVideo.readyState >= 2) {
+                heroVideo.currentTime = START_TIME;
+                const playPromise = heroVideo.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(() => {
+                        // Autoplay prevented - will try on user interaction
+                    });
+                }
+            }
+        };
+        
+        // Load and play when ready (multiple events for compatibility)
+        heroVideo.addEventListener('loadedmetadata', () => {
+            heroVideo.currentTime = START_TIME;
+            playHeroVideo();
         });
+        heroVideo.addEventListener('canplay', playHeroVideo);
+        heroVideo.addEventListener('canplaythrough', playHeroVideo);
+        
+        // User interaction triggers play (works for autoplay-blocked browsers)
+        const userInteractionPlay = () => {
+            if (heroVideo.paused && heroVideo.readyState >= 2) {
+                heroVideo.currentTime = START_TIME;
+                heroVideo.play();
+            }
+        };
+        document.addEventListener('click', userInteractionPlay, { once: true });
+        document.addEventListener('touchstart', userInteractionPlay, { once: true });
+        window.addEventListener('scroll', userInteractionPlay, { once: true });
         
         // Monitor video time and loop between 15-21 seconds
         heroVideo.addEventListener('timeupdate', function() {
-            // If video reaches or exceeds 21 seconds, loop back to 15 seconds
             if (this.currentTime >= END_TIME) {
                 this.currentTime = START_TIME;
             }
-            // If video somehow goes before 15 seconds (e.g., on load), set to 15
             if (this.currentTime < START_TIME) {
                 this.currentTime = START_TIME;
             }
         });
         
-        // Ensure video loops smoothly
+        // Ensure video loops
         heroVideo.addEventListener('ended', function() {
             this.currentTime = START_TIME;
             this.play();
         });
         
-        // Force play on user interaction if needed
-        document.addEventListener('click', function() {
-            if (heroVideo.paused) {
-                heroVideo.currentTime = START_TIME;
-                heroVideo.play();
-            }
-        }, { once: true });
-        
-        // Ensure video starts at correct time when it can play
-        heroVideo.addEventListener('canplay', function() {
-            if (this.currentTime < START_TIME || this.currentTime > END_TIME) {
-                this.currentTime = START_TIME;
+        // Retry play if paused (for power-saving modes)
+        heroVideo.addEventListener('pause', function() {
+            if (!this.ended && !document.hidden) {
+                setTimeout(() => {
+                    if (this.paused && this.readyState >= 2) {
+                        this.play();
+                    }
+                }, 100);
             }
         });
     }
@@ -534,36 +559,35 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('focus', userInteractionPlay, { once: true });
     }
 
-    // Simple MMA Section Video Control
+    // Simple MMA Section Video - Optimized
     const simpleMmaVideo = document.getElementById('simpleMmaVideo');
     if (simpleMmaVideo) {
         simpleMmaVideo.muted = true;
         simpleMmaVideo.loop = true;
         simpleMmaVideo.playsInline = true;
+        simpleMmaVideo.setAttribute('playsinline', '');
         
+        // Try to play video
         const playSimpleVideo = () => {
             const playPromise = simpleMmaVideo.play();
             if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    // Simple MMA video playing successfully
-                }).catch(error => {
-                    // Simple video autoplay prevented
-                    document.addEventListener('click', () => simpleMmaVideo.play(), { once: true });
-                    document.addEventListener('touchstart', () => simpleMmaVideo.play(), { once: true });
+                playPromise.catch(() => {
+                    // Autoplay prevented
                 });
             }
         };
         
-        simpleMmaVideo.addEventListener('canplay', playSimpleVideo, { once: true });
-        simpleMmaVideo.addEventListener('loadeddata', playSimpleVideo, { once: true });
+        // Play when ready
+        simpleMmaVideo.addEventListener('canplay', playSimpleVideo);
+        simpleMmaVideo.addEventListener('loadeddata', playSimpleVideo);
         
-        // Ensure video loops
+        // Video loop handler
         simpleMmaVideo.addEventListener('ended', function() {
             this.currentTime = 0;
             this.play();
         });
         
-        // Play on section visibility
+        // Play when section is visible
         const simpleMmaSection = document.querySelector('.simple-mma-section');
         if (simpleMmaSection && 'IntersectionObserver' in window) {
             const observer = new IntersectionObserver((entries) => {
@@ -573,7 +597,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
             }, { threshold: 0.3 });
-            
             observer.observe(simpleMmaSection);
         }
     }
