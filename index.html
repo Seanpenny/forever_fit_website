@@ -23,6 +23,8 @@
                 <li><a href="#kids-mma">Kids MMA</a></li>
                 <li><a href="#media">Media</a></li>
                 <li><a href="#events">Events</a></li>
+                <li><a href="#mobile-app">Mobile App</a></li>
+                <li><a href="#join">Join</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -57,13 +59,19 @@
     <!-- Section 2: About Section -->
     <section id="about" class="about-section">
         <div class="container">
-            <h2 class="section-title">About <span class="accent">Forever Fit</span></h2>
+            <h2 class="section-title">
+                <span class="title-word" data-word="0">About</span>
+                <span class="title-word" data-word="1">Forever</span>
+                <span class="title-word accent" data-word="2">Fit</span>
+            </h2>
+            
             <div class="about-content">
                 <div class="about-text">
-                    <p>Forever Fit is your premier destination for achieving your fitness goals. We offer state-of-the-art equipment, expert trainers, and a supportive community that will help you reach new heights.</p>
-                    <p>Whether you're a beginner or a seasoned athlete, we have everything you need to succeed on your fitness journey.</p>
-                    <p>Our mission is to empower individuals of all fitness levels to transform their bodies and lives through comprehensive training programs, cutting-edge facilities, and unwavering support from our dedicated team.</p>
-                    <p>At Forever Fit, we believe that fitness is not just about physical strength—it's about building confidence, discipline, and a healthier lifestyle that extends far beyond the gym walls.</p>
+                    <p class="sentence sentence-1 slide-in-left">Forever Fit is your premier destination for achieving your fitness goals.</p>
+                    <p class="sentence sentence-2 slide-in-right">We offer state-of-the-art equipment, expert trainers, and a supportive community that will help you reach new heights.</p>
+                    <p class="sentence sentence-3 slide-in-left">Whether you're a beginner or a seasoned athlete, we have everything you need to succeed on your fitness journey.</p>
+                    <p class="sentence sentence-4 slide-in-right">Our mission is to empower individuals of all fitness levels to transform their bodies and lives through comprehensive training programs, cutting-edge facilities, and unwavering support from our dedicated team.</p>
+                    <p class="sentence sentence-5 slide-in-left">At Forever Fit, we believe that fitness is not just about physical strength—it's about building confidence, discipline, and a healthier lifestyle that extends far beyond the gym walls.</p>
                 </div>
                 <div class="about-features">
                     <div class="feature-card">
@@ -234,11 +242,6 @@
             </button>
         </div>
         
-        <!-- Logo Overlay (appears after animation) -->
-        <div class="mma-logo-overlay">
-            <img src="images/Screenshot 2025-12-01 124404.png" alt="Kids MMA Logo" class="mma-logo-image">
-        </div>
-        
         <!-- Content Layer (buttons and text) -->
         <div class="mma-content-layer">
             <h1 class="mma-main-title">Kids Forever Fit MMA</h1>
@@ -297,11 +300,6 @@
         <!-- Matrix Overlay Effect -->
         <div class="simple-matrix-overlay"></div>
         
-        <!-- Logo in Center -->
-        <div class="simple-logo-center">
-            <img src="images/Screenshot 2025-12-01 124404.png" alt="Kids MMA Logo" class="simple-logo-image">
-        </div>
-        
         <!-- Title -->
         <div class="simple-title">
             <h1>Kids Forever Fit MMA</h1>
@@ -347,39 +345,54 @@
         </div>
     </section>
 
-    <!-- Section 5: Media/Images Gallery -->
+    <!-- Section 5: Media/Images Gallery - Expanding Card Gallery -->
     <section id="media" class="media-section">
         <div class="container">
-            <h2 class="section-title">Our Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="images/forverfit img1.jpg" alt="Forever Fit Gym" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span>State-of-the-Art Facilities</span>
+            <h2 class="section-title">Our <span class="accent">Gallery</span></h2>
+            <div class="expanding-gallery">
+                <div class="expanding-card" data-card="1">
+                    <div class="card-image">
+                        <img src="images/forverfit img1.jpg" alt="Crossfit Training" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Crossfit</h3>
+                        <p class="card-description">High-intensity functional training that combines strength, cardio, and flexibility for ultimate fitness results.</p>
                     </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/FF img2.jpg" alt="Gym Equipment" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span>Premium Equipment</span>
+                <div class="expanding-card" data-card="2">
+                    <div class="card-image">
+                        <img src="images/FF img2.jpg" alt="Weight Training" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Weight Training</h3>
+                        <p class="card-description">Build strength and muscle with our premium equipment and expert-guided training programs.</p>
                     </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/img3.jpg" alt="Fitness Training" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span>Expert Training</span>
+                <div class="expanding-card" data-card="3">
+                    <div class="card-image">
+                        <img src="images/img3.jpg" alt="Cardio Fitness" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Cardio Fitness</h3>
+                        <p class="card-description">Boost your endurance and cardiovascular health with our state-of-the-art cardio equipment.</p>
                     </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/splash enhanced.jpeg" alt="Forever Fit" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span>Your Fitness Journey</span>
+                <div class="expanding-card" data-card="4">
+                    <div class="card-image">
+                        <img src="images/splash enhanced.jpeg" alt="Group Classes" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Group Classes</h3>
+                        <p class="card-description">Join our energetic group sessions including Zumba, Yoga, and HIIT for motivation and fun.</p>
                     </div>
                 </div>
-                <div class="gallery-item">
-                    <img src="images/WhatsApp Image 2025-11-19 at 16.18.46_f7d66fb3.jpg" alt="Gym Community" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span>Community Spirit</span>
+                <div class="expanding-card" data-card="5">
+                    <div class="card-image">
+                        <img src="images/WhatsApp Image 2025-11-19 at 16.18.46_f7d66fb3.jpg" alt="Personal Training" loading="lazy">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Personal Training</h3>
+                        <p class="card-description">One-on-one sessions with certified trainers tailored to your specific fitness goals and needs.</p>
                     </div>
                 </div>
             </div>

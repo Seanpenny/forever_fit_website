@@ -38,9 +38,77 @@ document.addEventListener('DOMContentLoaded', function() {
                     top: offsetTop,
                     behavior: 'smooth'
                 });
+                
+                // Trigger about section animation if it's the about link
+                if (this.getAttribute('href') === '#about') {
+                    setTimeout(() => {
+                        // Reset flag and trigger animation
+                        window.aboutHasAnimated = false;
+                        animateAboutSection();
+                    }, 700);
+                }
             }
         });
     });
+    
+    // About Section Animation Function - Using CSS animations
+    function animateAboutSection() {
+        const aboutSection = document.getElementById('about');
+        if (!aboutSection) return;
+        
+        const sectionTitle = aboutSection.querySelector('.section-title');
+        const aboutText = aboutSection.querySelector('.about-text');
+        const aboutFeatures = aboutSection.querySelector('.about-features');
+        
+        // Remove animate class first to reset
+        if (sectionTitle) sectionTitle.classList.remove('animate');
+        if (aboutText) aboutText.classList.remove('animate');
+        if (aboutFeatures) aboutFeatures.classList.remove('animate');
+        
+        // Force reflow to reset animations
+        void aboutSection.offsetHeight;
+        
+        // Add animate class to trigger CSS animations
+        setTimeout(() => {
+            if (sectionTitle) sectionTitle.classList.add('animate');
+            if (aboutText) aboutText.classList.add('animate');
+            if (aboutFeatures) aboutFeatures.classList.add('animate');
+        }, 100);
+    }
+    
+    // Check if about section is in viewport and animate on scroll
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+        window.aboutHasAnimated = false;
+        
+        // Function to trigger animation
+        const triggerAnimation = () => {
+            if (!window.aboutHasAnimated) {
+                window.aboutHasAnimated = true;
+                animateAboutSection();
+            }
+        };
+        
+        // Intersection Observer for scroll trigger
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !window.aboutHasAnimated) {
+                    triggerAnimation();
+                }
+            });
+        }, { threshold: 0.2 });
+        
+        observer.observe(aboutSection);
+        
+        // Check if section is already visible on page load
+        setTimeout(() => {
+            const rect = aboutSection.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+            if (isVisible && !window.aboutHasAnimated) {
+                triggerAnimation();
+            }
+        }, 1000);
+    }
 
     // CTA Button Action
     const ctaButton = document.querySelector('.cta-button');
@@ -150,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
         heroVideo.addEventListener('loadedmetadata', function() {
             this.currentTime = START_TIME;
             this.play().catch(function(error) {
-                console.log('Video autoplay prevented:', error);
+                // Video autoplay prevented
             });
         });
         
@@ -338,7 +406,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         videoPlaying = false;
                         playAttempts++;
                         if (mmaPlayBtn) mmaPlayBtn.style.display = 'flex';
-                        console.log('Video play failed:', error.name);
                     });
                 }
             }
@@ -478,9 +545,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const playPromise = simpleMmaVideo.play();
             if (playPromise !== undefined) {
                 playPromise.then(() => {
-                    console.log('Simple MMA video playing successfully');
+                    // Simple MMA video playing successfully
                 }).catch(error => {
-                    console.log('Simple video autoplay prevented:', error.name);
+                    // Simple video autoplay prevented
                     document.addEventListener('click', () => simpleMmaVideo.play(), { once: true });
                     document.addEventListener('touchstart', () => simpleMmaVideo.play(), { once: true });
                 });
@@ -588,9 +655,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Console log for debugging
-    console.log('Forever Fit website loaded successfully!');
-    console.log('Green theme active with matrix warp effects');
+    // Expanding Card Gallery Interaction
+    const expandingCards = document.querySelectorAll('.expanding-card');
+    if (expandingCards.length > 0) {
+        expandingCards.forEach((card, index) => {
+            card.addEventListener('mouseenter', function() {
+                // Remove hover class from all cards
+                expandingCards.forEach(c => c.classList.remove('active'));
+                // Add active class to hovered card
+                this.classList.add('active');
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.classList.remove('active');
+            });
+        });
+    }
+    
+    // Website loaded successfully
 });
 
 // Handle window resize

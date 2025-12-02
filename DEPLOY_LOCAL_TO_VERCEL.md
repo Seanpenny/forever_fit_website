@@ -27,3 +27,4 @@ If you want automatic updates:
 
 **Recommendation:** Use Option 1 (drag & drop) - it's fastest!
 
+

@@ -32,3 +32,4 @@ Open the URL on your phone or send it to your friend. It should work!
 - Check GitHub Pages settings show "Published" status
 
 
+
