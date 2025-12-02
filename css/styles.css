@@ -173,6 +173,38 @@ body {
     padding-top: 80px;
 }
 
+/* Hero Background Image - Slides from Bottom */
+.hero-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/new image for home.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease;
+}
+
+.hero-section.animate .hero-background-image {
+    animation: slideInFromBottom 1.2s ease-out 0.3s forwards;
+}
+
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .hero-background {
     position: absolute;
     top: 0;
@@ -199,6 +231,8 @@ body {
     z-index: 1;
     pointer-events: none;
     will-change: transform;
+    /* GIF support */
+    display: block;
 }
 
 /* Subtle Overlay - Professional */
@@ -310,6 +344,38 @@ body {
     min-height: 450px;
     display: flex;
     align-items: center;
+    overflow: hidden;
+}
+
+.about-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/about background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.3s ease;
+}
+
+.about-section.animate .about-background-image {
+    animation: slideInFromRightBackground 1.2s ease-out 0.3s forwards;
+}
+
+@keyframes slideInFromRightBackground {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 0.3;
+        transform: translateX(0);
+    }
 }
 
 .about-section::before {
@@ -373,6 +439,8 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     gap: 3rem;
+    position: relative;
+    z-index: 1;
 }
 
 .about-text {
@@ -613,6 +681,44 @@ body {
     min-height: 450px;
     display: flex;
     align-items: center;
+    overflow: hidden;
+}
+
+/* Personal Trainers Background Image - Slides from Left */
+.trainers-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/personaltrianer background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 0.3s ease;
+}
+
+.trainers-section.animate .trainers-background-image {
+    animation: slideInFromLeft 1.2s ease-out 0.3s forwards;
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 0.3;
+        transform: translateX(0);
+    }
+}
+
+.trainers-section .container {
+    position: relative;
+    z-index: 1;
 }
 
 .trainers-section::before {
@@ -624,6 +730,7 @@ body {
     height: 2px;
     background: linear-gradient(90deg, transparent, var(--lime-green), transparent);
     box-shadow: 0 0 20px var(--lime-green);
+    z-index: 2;
 }
 
 .trainers-main-title {
@@ -873,119 +980,53 @@ body {
     justify-content: center;
 }
 
-/* Splash Screen Animation */
-.mma-splash-screen {
+/* Background Image */
+.mma-background-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    background-image: url('../assets/mma background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.3s ease;
+}
+
+.kids-mma-section.animate .mma-background-image {
+    animation: slideInFromRightBackground 1.2s ease-out 0.3s forwards;
+}
+
+/* Logo in Top Right Corner */
+.mma-logo-corner {
+    position: absolute;
+    top: 30px;
+    right: 30px;
     z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--dark-bg);
+    width: 200px;
+    height: auto;
     pointer-events: none;
 }
 
-.mma-splash-image {
+.mma-logo-corner .mma-logo-image {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    animation: splashRotateTransition 6s ease-in-out forwards;
+    height: auto;
+    max-width: 200px;
+    filter: drop-shadow(0 0 20px rgba(57, 255, 20, 0.6));
+    animation: logoGlow 3s ease-in-out infinite;
 }
 
-@keyframes splashRotateTransition {
-    0% {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-        z-index: 10;
-    }
-    15% {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-        z-index: 10;
-    }
-    20% {
-        opacity: 1;
-        transform: scale(1) rotate(90deg);
-        z-index: 10;
-    }
-    40% {
-        opacity: 1;
-        transform: scale(1) rotate(180deg);
-        z-index: 10;
-    }
-    60% {
-        opacity: 1;
-        transform: scale(1) rotate(270deg);
-        z-index: 10;
-    }
-    80% {
-        opacity: 1;
-        transform: scale(1) rotate(360deg);
-        z-index: 10;
-    }
-    90% {
-        opacity: 1;
-        transform: scale(1) rotate(360deg);
-        z-index: 10;
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) rotate(360deg);
-        z-index: 10;
-        visibility: visible;
-    }
-}
-
-/* Video Background */
-.mma-video-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0;
-    background: var(--dark-bg);
-    animation: videoFadeInTransition 6s ease-in-out forwards;
-}
-
-@keyframes videoFadeInTransition {
-    0% {
-        opacity: 0;
-        z-index: 1;
+@keyframes logoGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 20px rgba(57, 255, 20, 0.6));
     }
     50% {
-        opacity: 0;
-        z-index: 1;
+        filter: drop-shadow(0 0 30px rgba(57, 255, 20, 0.9));
     }
-    70% {
-        opacity: 0.5;
-        z-index: 1;
-    }
-    85% {
-        opacity: 0.8;
-        z-index: 1;
-    }
-    100% {
-        opacity: 1;
-        z-index: 1;
-    }
-}
-
-.mma-background-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    background: var(--dark-bg);
-    opacity: 1;
-    display: block;
 }
 
 /* Video Play Overlay Button */
@@ -1095,23 +1136,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    animation: contentFadeInTransition 6s ease-in-out forwards;
-}
-
-@keyframes contentFadeInTransition {
-    0%, 75% {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    85% {
-        opacity: 0.5;
-        transform: translateY(15px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    opacity: 1;
 }
 
 .mma-main-title {
@@ -1204,6 +1229,16 @@ body {
 
 /* Responsive Design for Kids MMA */
 @media (max-width: 768px) {
+    .mma-logo-corner {
+        top: 15px;
+        right: 15px;
+        width: 120px;
+    }
+    
+    .mma-logo-corner .mma-logo-image {
+        max-width: 120px;
+    }
+    
     .mma-nav-buttons {
         right: 20px;
         gap: 1rem;
@@ -1223,11 +1258,6 @@ body {
     
     .mma-main-title {
         font-size: 2.5rem;
-    }
-    
-    .mma-logo-image {
-        max-width: 250px;
-        max-height: 250px;
     }
 }
 
@@ -1426,6 +1456,43 @@ body {
     overflow: hidden;
 }
 
+/* Gallery Background Image - Slides from Top */
+.gallery-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/gallery abcklgriund.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.3s ease;
+}
+
+.media-section.animate .gallery-background-image {
+    animation: slideInFromTop 1.2s ease-out 0.3s forwards;
+}
+
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 0.3;
+        transform: translateY(0);
+    }
+}
+
+.media-section .container {
+    position: relative;
+    z-index: 1;
+}
+
 .media-section::before {
     content: '';
     position: absolute;
@@ -1574,6 +1641,44 @@ body {
     background: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-surface) 100%);
     position: relative;
     min-height: 450px;
+    overflow: hidden;
+}
+
+.events-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Events Background Image - Slides from Bottom */
+.events-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/events backgorind.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease;
+}
+
+.events-section.animate .events-background-image {
+    animation: slideInFromBottomBackground 1.2s ease-out 0.3s forwards;
+}
+
+@keyframes slideInFromBottomBackground {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to {
+        opacity: 0.3;
+        transform: translateY(0);
+    }
 }
 
 .events-section::before {
@@ -1634,17 +1739,80 @@ body {
     box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
 }
 
-/* Events Feed */
-.events-feed {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
+/* Events Carousel Wrapper */
+.events-carousel-wrapper {
+    position: relative;
+    width: 100%;
     margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.carousel-nav-btn {
+    background: rgba(57, 255, 20, 0.2);
+    border: 2px solid var(--lime-green);
+    color: var(--lime-green);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+.carousel-nav-btn:hover {
+    background: var(--lime-green);
+    color: var(--text-dark);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.6);
+    transform: scale(1.1);
+}
+
+.carousel-nav-btn:active {
+    transform: scale(0.95);
+}
+
+/* Events Feed - Horizontal Carousel */
+.events-feed {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--lime-green) transparent;
+    flex: 1;
+    padding: 1rem 0;
+    -webkit-overflow-scrolling: touch;
+}
+
+.events-feed::-webkit-scrollbar {
+    height: 8px;
+}
+
+.events-feed::-webkit-scrollbar-track {
+    background: rgba(26, 26, 26, 0.5);
+    border-radius: 10px;
+}
+
+.events-feed::-webkit-scrollbar-thumb {
+    background: var(--lime-green);
+    border-radius: 10px;
+}
+
+.events-feed::-webkit-scrollbar-thumb:hover {
+    background: rgba(57, 255, 20, 0.8);
 }
 
 .event-card {
     background: rgba(26, 26, 26, 0.8);
-    border-radius: 20px;
+    border-radius: 12px;
     overflow: hidden;
     border: 2px solid transparent;
     transition: all 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
@@ -1653,6 +1821,9 @@ body {
     flex-direction: column;
     opacity: 1;
     transform: scale(1);
+    min-width: 220px;
+    max-width: 220px;
+    flex-shrink: 0;
 }
 
 .event-card:hover {
@@ -1668,7 +1839,7 @@ body {
 .event-image-container {
     position: relative;
     width: 100%;
-    height: 250px;
+    height: 140px;
     overflow: hidden;
     background: var(--dark-surface);
 }
@@ -1710,7 +1881,7 @@ body {
 }
 
 .event-content {
-    padding: 2rem;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -1721,57 +1892,61 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 70px;
-    height: 70px;
+    width: 45px;
+    height: 45px;
     background: rgba(57, 255, 20, 0.1);
     border: 2px solid var(--lime-green);
-    border-radius: 15px;
-    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 0.8rem;
     position: absolute;
-    top: -35px;
-    left: 2rem;
-    box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+    top: -22px;
+    left: 1rem;
+    box-shadow: 0 0 12px rgba(57, 255, 20, 0.3);
 }
 
 .date-day {
-    font-size: 1.8rem;
+    font-size: 1.1rem;
     font-weight: 900;
     color: var(--lime-green);
     line-height: 1;
 }
 
 .date-month {
-    font-size: 0.9rem;
+    font-size: 0.65rem;
     font-weight: 700;
     color: var(--lime-green);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     line-height: 1;
-    margin-top: 0.2rem;
+    margin-top: 0.15rem;
 }
 
 .event-title {
     color: var(--lime-green);
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 900;
-    margin-bottom: 1rem;
-    margin-top: 2rem;
-    letter-spacing: 1px;
+    margin-bottom: 0.6rem;
+    margin-top: 1.2rem;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
 }
 
 .event-description {
     color: rgba(255, 255, 255, 0.8);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
     flex-grow: 1;
+    font-size: 0.8rem;
 }
 
 .event-meta {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-    padding-top: 1rem;
+    gap: 0.3rem;
+    margin-bottom: 0.8rem;
+    padding-top: 0.6rem;
+    font-size: 0.75rem;
+}
     border-top: 1px solid rgba(57, 255, 20, 0.2);
 }
 
@@ -1788,8 +1963,9 @@ body {
     background: var(--lime-green);
     color: var(--text-dark);
     border: none;
-    padding: 0.8rem 2rem;
-    border-radius: 25px;
+    padding: 0.5rem 1.2rem;
+    border-radius: 18px;
+    font-size: 0.75rem;
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
@@ -1808,9 +1984,31 @@ body {
 
 /* Responsive Design for Events Section */
 @media (max-width: 768px) {
+    .events-carousel-wrapper {
+        gap: 0.5rem;
+    }
+    
+    .carousel-nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+    
     .events-feed {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1rem;
+    }
+    
+    .event-card {
+        min-width: 200px;
+        max-width: 200px;
+    }
+    
+    .event-image-container {
+        height: 120px;
+    }
+    
+    .event-content {
+        padding: 0.8rem;
     }
 
     .event-card {

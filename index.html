@@ -24,7 +24,6 @@
                 <li><a href="#media">Media</a></li>
                 <li><a href="#events">Events</a></li>
                 <li><a href="#mobile-app">Mobile App</a></li>
-                <li><a href="#join">Join</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -37,12 +36,9 @@
 
     <!-- Section 1: Hero Section with Video Background -->
     <section id="home" class="hero-section">
+        <div class="hero-background-image"></div>
         <div class="hero-background">
-            <video autoplay muted loop playsinline preload="metadata" class="hero-video" id="heroVideo" poster="assets/splash_enhanced.jpeg">
-                <source src="assets/Green Team .webm" type="video/webm">
-                <source src="assets/Green Team .mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+            <img src="assets/new image for home.jpg" alt="Hero Background" class="hero-video" id="heroVideo">
             <div class="matrix-overlay"></div>
         </div>
         <div class="hero-content">
@@ -58,6 +54,7 @@
 
     <!-- Section 2: About Section -->
     <section id="about" class="about-section">
+        <div class="about-background-image"></div>
         <div class="container">
             <h2 class="section-title">
                 <span class="title-word" data-word="0">About</span>
@@ -105,6 +102,7 @@
 
     <!-- Section 3: Meet the Team / Personal Trainers -->
     <section id="trainers" class="trainers-section">
+        <div class="trainers-background-image"></div>
         <div class="container">
             <h1 class="trainers-main-title">Our <span class="accent">Personal Trainers</span></h1>
             <h2 class="trainers-subtitle">Meet the Team</h2>
@@ -224,23 +222,12 @@
 
     <!-- Section 4: Kids Forever Fit MMA -->
     <section id="kids-mma" class="kids-mma-section">
-        <!-- Splash Screen Animation Layer -->
-        <div class="mma-splash-screen">
-            <img src="images/Screenshot 2025-12-01 124404.png" alt="Kids MMA Splash" class="mma-splash-image">
-        </div>
+        <!-- Background Image -->
+        <div class="mma-background-image"></div>
         
-        <!-- Video Background Layer -->
-        <div class="mma-video-background">
-            <video autoplay muted loop playsinline preload="metadata" class="mma-background-video" id="mmaKidsVideo" webkit-playsinline="true" x-webkit-airplay="allow" poster="images/Screenshot 2025-12-01 124404.png">
-                <source src="assets/mma_kids_vid.webm" type="video/webm">
-                <source src="assets/mma_kids_vid.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <!-- Fallback play button if video doesn't autoplay -->
-            <button class="video-play-overlay" id="mmaVideoPlayBtn" style="display: none;">
-                <span>▶</span>
-                <p>Click to Play Video</p>
-            </button>
+        <!-- Logo in Top Right Corner -->
+        <div class="mma-logo-corner">
+            <img src="images/Screenshot 2025-12-01 124404.png" alt="Kids MMA Logo" class="mma-logo-image">
         </div>
         
         <!-- Content Layer (buttons and text) -->
@@ -288,67 +275,9 @@
         </div>
     </section>
 
-    <!-- Simple Video Background Section (Second Kids MMA Section) -->
-    <section id="kids-mma-video" class="simple-mma-section">
-        <!-- Video Background -->
-        <div class="simple-video-background">
-            <video autoplay muted loop playsinline preload="metadata" class="simple-background-video" id="simpleMmaVideo" poster="images/Screenshot 2025-12-01 124404.png">
-                <source src="assets/mma_kids_vid.webm" type="video/webm">
-                <source src="assets/mma_kids_vid.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-        
-        <!-- Matrix Overlay Effect -->
-        <div class="simple-matrix-overlay"></div>
-        
-        <!-- Title -->
-        <div class="simple-title">
-            <h1>Kids Forever Fit MMA</h1>
-        </div>
-        
-        <!-- Buttons on Side -->
-        <div class="simple-nav-buttons">
-            <button class="simple-nav-btn" data-content="about">
-                <span class="simple-btn-label">About</span>
-                <div class="simple-btn-content">
-                    <h3>About Kids MMA</h3>
-                    <p>Discover our comprehensive martial arts program designed specifically for kids.</p>
-                </div>
-            </button>
-            <button class="simple-nav-btn" data-content="how-it-works">
-                <span class="simple-btn-label">How It Works</span>
-                <div class="simple-btn-content">
-                    <h3>How It Works</h3>
-                    <p>Learn about our structured classes and training methodology.</p>
-                </div>
-            </button>
-            <button class="simple-nav-btn" data-content="age-groups">
-                <span class="simple-btn-label">Age Groups</span>
-                <div class="simple-btn-content">
-                    <h3>Age Groups</h3>
-                    <p>Find the right class for your child's age and skill level.</p>
-                </div>
-            </button>
-            <button class="simple-nav-btn" data-content="benefits">
-                <span class="simple-btn-label">Benefits</span>
-                <div class="simple-btn-content">
-                    <h3>Benefits</h3>
-                    <p>See how martial arts helps kids develop physically and mentally.</p>
-                </div>
-            </button>
-            <button class="simple-nav-btn" data-content="schedule">
-                <span class="simple-btn-label">Schedule</span>
-                <div class="simple-btn-content">
-                    <h3>Schedule</h3>
-                    <p>View class times and days available for registration.</p>
-                </div>
-            </button>
-        </div>
-    </section>
-
     <!-- Section 5: Media/Images Gallery - Expanding Card Gallery -->
     <section id="media" class="media-section">
+        <div class="gallery-background-image"></div>
         <div class="container">
             <h2 class="section-title">Our <span class="accent">Gallery</span></h2>
             <div class="expanding-gallery">
@@ -403,6 +332,7 @@
 
     <!-- Events & News Feed Section -->
     <section id="events" class="events-section">
+        <div class="events-background-image"></div>
         <div class="container">
             <h2 class="section-title">Events & <span class="accent">News Feed</span></h2>
             <p class="events-subtitle">Stay updated with our latest events, competitions, and gym news</p>
@@ -414,8 +344,10 @@
                 <button class="filter-btn" data-filter="past">Past Events</button>
             </div>
 
-            <!-- Events Feed -->
-            <div class="events-feed">
+            <!-- Events Feed - Horizontal Carousel -->
+            <div class="events-carousel-wrapper">
+                <button class="carousel-nav-btn carousel-prev" aria-label="Previous events">‹</button>
+                <div class="events-feed">
                 <!-- Upcoming Events -->
                 <article class="event-card upcoming" data-category="upcoming">
                     <div class="event-image-container">
@@ -537,6 +469,8 @@
                         <button class="event-btn">View Gallery</button>
                     </div>
                 </article>
+                </div>
+                <button class="carousel-nav-btn carousel-next" aria-label="Next events">›</button>
             </div>
         </div>
     </section>
@@ -669,132 +603,6 @@
         </div>
     </section>
 
-    <!-- Join Section -->
-    <section id="join" class="join-section">
-        <div class="container">
-            <h1 class="join-main-title">Join Forever Fit</h1>
-            <h2 class="join-subtitle">Choose Your Perfect Plan</h2>
-            
-            <!-- Email Input -->
-            <div class="join-email-container">
-                <input type="email" placeholder="Enter your email address" class="join-email-input" id="joinEmailInput">
-                <button class="join-email-btn">Get Started</button>
-            </div>
-            
-            <!-- Package Cards -->
-            <div class="packages-grid">
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3 class="package-name">Flexi Fit</h3>
-                        <div class="package-badge">Popular</div>
-                    </div>
-                    <div class="package-price">
-                        <span class="price-amount">R500</span>
-                        <span class="price-period">/ Month to Month</span>
-                    </div>
-                    <ul class="package-features">
-                        <li>Full gym access</li>
-                        <li>All equipment included</li>
-                        <li>No contract commitment</li>
-                        <li>Cancel anytime</li>
-                    </ul>
-                    <button class="package-join-btn">Join Now</button>
-                </div>
-                
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3 class="package-name">Premium Fit</h3>
-                        <div class="package-badge">Best Value</div>
-                    </div>
-                    <div class="package-price">
-                        <span class="price-amount">R1,200</span>
-                        <span class="price-period">/ 3 Months</span>
-                    </div>
-                    <ul class="package-features">
-                        <li>Full gym access</li>
-                        <li>Personal training session</li>
-                        <li>Nutrition consultation</li>
-                        <li>Priority booking</li>
-                    </ul>
-                    <button class="package-join-btn">Join Now</button>
-                </div>
-                
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3 class="package-name">Elite Fit</h3>
-                        <div class="package-badge">Premium</div>
-                    </div>
-                    <div class="package-price">
-                        <span class="price-amount">R2,200</span>
-                        <span class="price-period">/ 6 Months</span>
-                    </div>
-                    <ul class="package-features">
-                        <li>Full gym access</li>
-                        <li>Unlimited personal training</li>
-                        <li>Nutrition plan included</li>
-                        <li>24/7 access</li>
-                        <li>Guest passes included</li>
-                    </ul>
-                    <button class="package-join-btn">Join Now</button>
-                </div>
-                
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3 class="package-name">Student Fit</h3>
-                        <div class="package-badge">Special</div>
-                    </div>
-                    <div class="package-price">
-                        <span class="price-amount">R350</span>
-                        <span class="price-period">/ Month</span>
-                    </div>
-                    <ul class="package-features">
-                        <li>Full gym access</li>
-                        <li>Student ID required</li>
-                        <li>All equipment included</li>
-                        <li>Flexible hours</li>
-                    </ul>
-                    <button class="package-join-btn">Join Now</button>
-                </div>
-                
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3 class="package-name">Family Fit</h3>
-                        <div class="package-badge">Family</div>
-                    </div>
-                    <div class="package-price">
-                        <span class="price-amount">R1,500</span>
-                        <span class="price-period">/ Month</span>
-                    </div>
-                    <ul class="package-features">
-                        <li>Up to 4 family members</li>
-                        <li>Full gym access for all</li>
-                        <li>Kids MMA classes included</li>
-                        <li>Family training sessions</li>
-                    </ul>
-                    <button class="package-join-btn">Join Now</button>
-                </div>
-                
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3 class="package-name">Annual Fit</h3>
-                        <div class="package-badge">Save 20%</div>
-                    </div>
-                    <div class="package-price">
-                        <span class="price-amount">R4,800</span>
-                        <span class="price-period">/ Year</span>
-                    </div>
-                    <ul class="package-features">
-                        <li>Full gym access</li>
-                        <li>All equipment included</li>
-                        <li>2 free personal training sessions</li>
-                        <li>Best value - Save 20%</li>
-                        <li>Priority support</li>
-                    </ul>
-                    <button class="package-join-btn">Join Now</button>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="footer">
